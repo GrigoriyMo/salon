@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Запись на маникюр</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="fixed-container">
+            <div class="central-container">
+                <h1 class="akrobat">салон маникюра</h1>
+                <h2>Название </h2>
+                <div class="phone opacity_blocks">
+                    <div class="phone_img">
+                        <a href="tel: +79999999999">8(999)999-99-99</a>
+                    </div>
+                </div>
+            </div>
+            <div class="record-container opacity_blocks">
+                <span>Записаться</span>
+            </div>
+        </div>
+        <div class="customer_data">
+            <div class="fixed-container">
+                <label class="akrobat" for="fio">Как Вас зовут?</label><br>
+                <input type="text" name="fio" id="fio" required="required"><br>
+                <label class="akrobat" for="tel">Ваш номер телефона</label><br>
+                <input type="tel" placeholder="+7 (999) 99 99 999" name="phone" id="tel" required="required"><br>
+                <label class="akrobat" for="email">Email</label><br>
+                <input type="email" name="email" id="email"><br>
+                <select name="service" class="service-select akrobat">
+					<option value="manikur">Маникюр</option>
+					<option value="manikurCover" selected>Маникюр с покрытием</option>
+					<option value="manikurDesign">Маникюр с дизайном</option>
+					<option value="manikurPedikur">Маникюр + педикюр</option>
+					<option value="pedikur">Педикюр</option>
+				</select>
+                <div class="next">Далее</div>
+
+            </div>
+            <div class="email-tip"></div>
+        </div>
+        <form action="#" class="record" method="POST">
+            <fieldset>
+                <div class="calendar">
+                    <div class="month-select-wrapper">
+                        <select name="month" class="service-select akrobat">
+                                <option value="august">Август</option>
+                                <option value="august" selected>Август</option>
+                                <option value="august">Август</option>
+                                <option value="august">Август</option>
+                                <option value="august">Август</option>
+                        </select>
+                    </div>
+                    <table class="calendar-header">
+                        <tbody>
+                            <tr class="week-day">
+                                <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
+                                    <td>
+                                        <%=currentWeek.translatedDays[i] %>
+                                    </td>
+                                    <% } %>
+                            </tr>
+                            <tr class="month-day">
+                                <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
+                                    <td>
+                                        <%=currentWeek.todayDay + i %>
+                                    </td>
+                                    <% } %>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="time-slot-container">
+                        <ul class="time-slot">
+                            <li>09:00</li>
+                            <li>10:00</li>
+                            <li>11:00</li>
+                            <li>14:00</li>
+                            <li>15:00</li>
+                            <li>16:00</li>
+                            <li>17:00</li>
+                            <li>18:00</li>
+                            <li>19:00</li>
+                            <li>20:00</li>
+                            <li>21:00</li>
+                        </ul>
+                        <table>
+                            <tbody>
+                                <% var weekdata = currentWeek.activeDays.thisWeek; %>
+                                    <% var time_list = currentWeek.time_list; %>
+                                        <tr data-hour="09:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="10:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="11:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="14:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="15:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="16:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="17:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="18:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="19:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                                        <tr data-hour="20:00">
+                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                <%    if(i===weekdata.length-1){ %>
+                                                    <td>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00" data-lastday="true"></div>
+                                                        <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30" data-lastday="true"></div>
+                                                    </td>
+                                                    <%    }else{  %>
+                                                        <td>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00"></div>
+                                                            <div class="cell" data-day="<%=`${currentWeek.todayDay + i}.${currentWeek.month}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30"></div>
+                                                        </td>
+                                                        <% }} %>
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="submit-wrapper">
+                        <input type="submit" name="submit" class="myformSubmit" value="Записаться">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
