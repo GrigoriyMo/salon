@@ -1,3 +1,7 @@
-Поздравляем <%= data.customerName %> ! Вы зарегистрировались на <%= data.date %>
-Услуга: <%= data.service_translation %> 
-Время записи: с <%= data.period[0] %> по <%= data.period[1] %> <%= data.date %>
+<% if( (data.period).length === 1 && data.period[0].substring(3,5) === "30" ){  %>
+<%  var message = `<p>Время записи: c ${data.period[0]} по ${Number(data.period[0].substring(0,2))+1}:00 ${data.date}</p>`; %>
+<% } else { 
+    var message = `<p>Время записи: с ${data.period[0]} по ${data.period[data.period.length-1]} ${data.date}</p>`; } %>
+<p>Поздравляем <%= data.customerName %> ! Вы зарегистрировались на <%= data.date %> </p>
+<p>Услуга: <%= data.service_translation %> </p>
+<%= message %>
