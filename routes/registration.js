@@ -3,16 +3,16 @@ var router = express.Router();
 var lib = require('../lib/lib');
 
 router.post('/', function(req, res, next) {
-  var data = req.body;
-  lib.customerRegistration(data,function(result){
-    console.log('registrate');
-    console.log(JSON.stringify(req.body));
-    if(result!=='slot_busy'){
-    	res.send('registration_completed');
-    }else{
-    	res.send('slot_busy');
-    }
-  });
+    var data = req.body;
+    data.service_translation = lib.helper_service_translations(data);
+    console.log(data);
+    lib.customerRegistration(data, function(result) {
+        if (result !== 'slot_busy') {
+            res.render('regcomplete', { data });
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 module.exports = router;

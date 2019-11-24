@@ -24,6 +24,7 @@ window.onload = function() {
         manikurPedikur: 6,
         pedikur: 2
     };
+
     var session = new Object();
     session.offset = 2;
 
@@ -350,6 +351,7 @@ window.onload = function() {
         e.preventDefault();
         sendRequest('post', '/registration', prepareData(session), function(response) {
             alert(response);
+            document.location.reload(true);
             session.selectedElements = clearIfAnotherCellsSelected(session.selectedElements);
         });
     });
