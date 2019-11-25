@@ -271,7 +271,7 @@ window.onload = function() {
             switch (status) {
                 case true:
                     session.service = serviceSelect.value;
-                    calendar.style.display = 'flex';
+                    calendar.style.display = 'block';
                     myformSubmit.style.display = 'block';
                     break;
                 case false:

@@ -58,24 +58,6 @@
                                 <option value="august">Август</option>
                         </select>
                     </div>
-                    <table class="calendar-header">
-                        <tbody>
-                            <tr class="week-day">
-                                <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
-                                    <td>
-                                        <%=currentWeek.translatedDays[i] %>
-                                    </td>
-                                    <% } %>
-                            </tr>
-                            <tr class="month-day">
-                                <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
-                                    <td>
-                                        <%=currentWeek.todayDay + i %>
-                                    </td>
-                                    <% } %>
-                            </tr>
-                        </tbody>
-                    </table>
                     <div class="time-slot-container">
                         <ul class="time-slot">
                             <li>09:00</li>
@@ -94,6 +76,20 @@
                             <tbody>
                                 <% var weekdata = currentWeek.activeDays.thisWeek; %>
                                     <% var time_list = currentWeek.time_list; %>
+                                        <tr class="week-day">
+                                            <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
+                                                <th>
+                                                    <%=currentWeek.translatedDays[i] %>
+                                                </th>
+                                                <% } %>
+                                        </tr>
+                                        <tr class="month-day">
+                                            <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
+                                                <th>
+                                                    <%=currentWeek.todayDay + i %>
+                                                </th>
+                                                <% } %>
+                                        </tr>
                                         <tr data-hour="09:00">
                                             <% for(var i = 0; i < weekdata.length ; i++) {	%>
                                                 <%    if(i===weekdata.length-1){ %>
