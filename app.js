@@ -9,7 +9,6 @@ var registrationRouter = require('./routes/registration');
 var getDataFront = require('./routes/getdatafront');
 var getBusyCalendar = require('./routes/getbusycalendar');
 var lib = require('./lib/lib').getCurrenWeek();
-console.log(lib);
 
 var app = express();
 

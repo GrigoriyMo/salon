@@ -11,18 +11,18 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('images/background.jpg');
-    width: 342px;
+    background-image: url('../images/background.jpg');
+    width: 100%;
 }
 
 @font-face {
     font-family: notperfect;
-    src: url(ttf/11764.ttf);
+    src: url('../ttf/11764.ttf');
 }
 
 @font-face {
     font-family: akrobat;
-    src: url(ttf/akrobat_regular.ttf);
+    src: url('../ttf/akrobat_regular.ttf');
 }
 
 .akrobat {
@@ -149,7 +149,7 @@ body {
 }
 
 .phone_img {
-    background-image: url('images/phone.png');
+    background-image: url('../images/phone.png');
     background-repeat: no-repeat;
     background-position: left;
     background-size: 30px 30px;
@@ -216,7 +216,7 @@ fieldset {
     -ms-appearance: none;
     appearance: none!important;
     padding-right: 12px;
-    background: url('images/arrow.png') no-repeat 96% 50%;
+    background: url('../images/arrow.png') no-repeat 96% 50%;
     background-size: 15px;
     background-color: #fff4f4;
     font-size: 12px;
