@@ -86,8 +86,12 @@ fieldset {
     font-family: akrobat;
 }
 
-.calendar {
-    display: none;
+.phone {
+    padding: 15px 15%;
+    box-shadow: 4px 8px;
+    background-color: #fedadd;
+    font-family: notperfect;
+    font-size: 20px;
 }
 
 .phone a {
@@ -95,14 +99,6 @@ fieldset {
     color: black;
     padding-left: 30px;
     vertical-align: middle;
-}
-
-.phone {
-    padding: 15px 15%;
-    box-shadow: 4px 8px;
-    background-color: #fedadd;
-    font-family: notperfect;
-    font-size: 20px;
 }
 
 .phone_img {
@@ -154,57 +150,155 @@ fieldset {
     font-size: 13.5px;
 }
 
+.month-select-wrapper {
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+.calendar .service-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none!important;
+    padding-right: 12px;
+    background: url('../images/arrow.png') no-repeat 96% 50%;
+    background-size: 15px;
+    background-color: #fff4f4;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+}
+
+.calendar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -240px;
+    width: 400px;
+    min-height: 480px;
+    background-color: #fff4f4;
+    border-radius: 25px;
+}
+
+.calendar li {
+    list-style-type: none;
+    font-size: 12px;
+}
+
+.calendar-header {
+    padding-left: 53px;
+}
+
+.calendar-header tr td {
+    padding: 0 8px;
+}
+
+.time-slot {
+    padding: 65px 2px 0 0;
+}
+
+.time-slot li {
+    padding-bottom: 12px;
+}
+
+.time-slot-container {
+    display: flex;
+    justify-content: center;
+}
+
+.cell {
+    width: 30px;
+    height: 10.5px;
+    padding: 0;
+    background-color: #fff4f4;
+    border: 1px solid black;
+}
+
+.inactive {
+    background-color: #dc94bf;
+}
+
+.cell:nth-child(even) {
+    border-top: 0;
+}
+
+.cell:nth-child(odd) {
+    border-bottom: 0;
+}
+
+.time-slot-container table {
+    margin: 0 0 0 0;
+    padding-top: 5px;
+}
+
+.time-slot-container td:hover {
+    background: white;
+}
+
+.selected-time-slot {
+    background-color: #ff99cc;
+}
+
+.myformSubmit {
+    border: 1px solid #9b9b9b;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 0 26px 0 40px;
+    height: 30px;
+    display: none;
+    font-size: 24px;
+}
+
+.record-container {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #fedadd;
+    box-shadow: 4px 8px;
+    font-size: 54px;
+}
+
+.record-container span {
+    opacity: 1;
+    color: black;
+    font-family: akrobat;
+}
+
 
 /* Large desktops and laptops */
 
-@media (min-width: 1200px) {
-    .record-container {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #fedadd;
-        box-shadow: 4px 8px;
-        font-size: 54px;
-    }
-    .record-container span {
-        opacity: 1;
-        color: black;
-        font-family: akrobat;
-    }
-}
+@media (min-width: 1200px) {}
 
 
 /* Portrait tablets and medium desktops */
 
-@media (min-width: 992px) and (max-width: 1199px) {
-    .record-container {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #fedadd;
-        box-shadow: 4px 8px;
-        font-size: 54px;
-    }
-    .record-container span {
-        opacity: 1;
-        color: black;
-        font-family: akrobat;
-    }
-}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 
 /* Portrait tablets and small desktops */
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .record-container {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #fedadd;
-        box-shadow: 4px 8px;
-        font-size: 54px;
+    .calendar {
+        width: 600px;
+        margin-left: -300px;
+        padding-bottom: 15px;
     }
-    .record-container span {
-        opacity: 1;
-        color: black;
-        font-family: akrobat;
+    .cell {
+        width: 40px;
+        height: 16px;
+    }
+    .time-slot {
+        padding-top: 30px;
+        margin: 0;
+    }
+    .time-slot li {
+        font-size: 16px;
+        padding-bottom: 20px;
     }
 }
 
@@ -212,18 +306,6 @@ fieldset {
 /* Landscape phones and portrait tablets */
 
 @media (max-width: 767px) {
-    .record-container {
-        margin-top: 20px;
-        width: 100%;
-        background-color: #fedadd;
-        box-shadow: 4px 8px;
-        font-size: 54px;
-    }
-    .record-container span {
-        opacity: 1;
-        color: black;
-        font-family: akrobat;
-    }
     .phone a {
         padding-left: 40px;
     }
@@ -263,94 +345,8 @@ fieldset {
         display: none;
         margin: 14px 18px 0 18px;
     }
-    .month-select-wrapper {
-        margin-top: 15px;
-        padding-left: 15px;
-    }
-    .calendar .service-select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        appearance: none!important;
-        padding-right: 12px;
-        background: url('../images/arrow.png') no-repeat 96% 50%;
-        background-size: 15px;
-        background-color: #fff4f4;
-        font-size: 12px;
-        outline: none;
-        cursor: pointer;
-        border: 0;
-    }
-    .calendar {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -200px;
-        margin-top: -240px;
-        width: 400px;
-        min-height: 480px;
-        background-color: #fff4f4;
-        border-radius: 25px;
-    }
-    .calendar li {
-        list-style-type: none;
-        font-size: 12px;
-    }
-    .calendar-header {
-        padding-left: 53px;
-    }
-    .calendar-header tr td {
-        padding: 0 8px;
-    }
-    .time-slot {
-        padding: 65px 2px 0 0;
-    }
-    .time-slot li {
-        padding-bottom: 12px;
-    }
     .time-slot-container {
-        display: flex;
-        margin-top: 14px;
         align-items: center;
-        justify-content: center;
-    }
-    .cell {
-        width: 30px;
-        height: 10.5px;
-        padding: 0;
-        background-color: #fff4f4;
-        border: 1px solid black;
-    }
-    .inactive {
-        background-color: #996666;
-    }
-    .cell:nth-child(even) {
-        border-top: 0;
-    }
-    .cell:nth-child(odd) {
-        border-bottom: 0;
-    }
-    .time-slot-container table {
-        margin: 0 0 0 0;
-        padding-top: 5px;
-    }
-    .time-slot-container td:hover {
-        background: white;
-    }
-    .selected-time-slot {
-        background-color: #ff99cc;
-    }
-    .myformSubmit {
-        border: 1px solid #9b9b9b;
-        border-radius: 15px;
-        margin: 0 auto;
-        padding: 0 26px 0 40px;
-        height: 30px;
-        display: none;
-        font-size: 24px;
     }
 }
 
