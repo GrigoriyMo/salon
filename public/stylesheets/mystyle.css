@@ -176,14 +176,16 @@ fieldset {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     margin-left: -200px;
     margin-top: -240px;
-    width: 400px;
+    width: 600px;
     min-height: 480px;
     background-color: #fff4f4;
     border-radius: 25px;
+    margin-left: -300px;
+    padding-bottom: 15px;
 }
 
 .calendar li {
@@ -200,11 +202,13 @@ fieldset {
 }
 
 .time-slot {
-    padding: 65px 2px 0 0;
+    padding-top: 45px;
+    margin: 0;
 }
 
 .time-slot li {
-    padding-bottom: 12px;
+    font-size: 16px;
+    padding-bottom: 20px;
 }
 
 .time-slot-container {
@@ -213,8 +217,8 @@ fieldset {
 }
 
 .cell {
-    width: 30px;
-    height: 10.5px;
+    width: 40px;
+    height: 16px;
     padding: 0;
     background-color: #fff4f4;
     border: 1px solid black;
@@ -277,7 +281,14 @@ fieldset {
 
 /* Portrait tablets and medium desktops */
 
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .calendar {
+        width: 600px;
+        margin-left: -300px;
+        padding-bottom: 15px;
+        top: 30%;
+    }
+}
 
 
 /* Portrait tablets and small desktops */
@@ -293,7 +304,7 @@ fieldset {
         height: 16px;
     }
     .time-slot {
-        padding-top: 30px;
+        padding-top: 40px;
         margin: 0;
     }
     .time-slot li {

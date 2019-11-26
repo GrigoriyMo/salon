@@ -103,10 +103,13 @@ window.onload = function() {
             session.customerPhone = customerPhone.value;
             session.email = emailField.value;
             session.period = [];
+            session.periodEndData = [];
             session.date = session.selectedElements[0].dataset.day;
             for (i = 0; i < session.selectedElements.length; i++) {
                 var periodFirstTimeSlot = session.selectedElements[i].dataset.hour;
+                var endperiod = session.selectedElements[i].dataset.timeslotend;
                 session.period.push(periodFirstTimeSlot);
+                session.periodEndData.push(endperiod);
             }
             return JSON.stringify(session);
         } else {
@@ -198,6 +201,7 @@ window.onload = function() {
                 alert('Невозможно выбрать данное время');
             }
         });
+        console.log(session.selectedElements);
         return;
     }
 
@@ -351,8 +355,8 @@ window.onload = function() {
         e.preventDefault();
         sendRequest('post', '/registration', prepareData(session), function(response) {
             alert(response);
-            document.location.reload(true);
             session.selectedElements = clearIfAnotherCellsSelected(session.selectedElements);
+            document.location.reload(true);
         });
     });
 
