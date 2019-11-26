@@ -28,6 +28,13 @@ window.onload = function() {
     var session = new Object();
     session.offset = 2;
 
+    /**
+     * 
+     * @param {string } method метод запроса get/post
+     * @param {string} url  урл запроса
+     * @param {object} object  тело запроса для post
+     * @param {function} cb  колбэк функция
+     */
     function sendRequest(method, url, object, cb) {
         if (object !== false) {
             var xhr = new XMLHttpRequest();
@@ -57,6 +64,10 @@ window.onload = function() {
         }
     }
 
+    /**
+     * Функция возвращает все ячейки 
+     * календаря на текущий день
+     */
     function getTodayCells() {
         var todayCells = new Array();
         for (var i = 0; i < calendarCells.length; i++) {
@@ -68,6 +79,12 @@ window.onload = function() {
         return todayCells;
     }
 
+    /**
+     * @param {string} string текущее время
+     * @param {number} offset офсет - глобальный параметр 
+     * Возвращает время с учетом офсета, для блокировки ячеек текущего дня
+     */
+
     function offsetCount(string, offset) {
         var replace_part = string[0] + string[1];
         var new_part = Number(replace_part) + offset; //for example 24
@@ -78,6 +95,9 @@ window.onload = function() {
         return new_string;
     }
 
+    /**
+     * Возвращает забронированные ячейки из базы, путем гет запроса на сервер.
+     */
     function getBusySlots() {
         sendRequest('get', '/getbusycalendar', null, function(response) {
             response = JSON.parse(response);
@@ -85,8 +105,13 @@ window.onload = function() {
         });
     }
 
+    /**
+     * 
+     * @param {object*} session обьект текущей сессии пользователя
+     * Помечает ячейки (забронированные и с учетом офсета) как неактивные 
+     * для выбора (бронирования) пользователем.
+     */
     function hideInactiveSlots(session) {
-        console.log(session.currentTime);
         var todaySlots = getTodayCells();
         if (session.currentTime > '21:30') {
             for (var i = 0; i < todaySlots.length; i++) {
@@ -100,11 +125,27 @@ window.onload = function() {
         }
     }
 
+
+    /**
+     * 
+     * @param {function} cb колбэк функция
+     * Функция возвращает в колбэке объект с данными, пример:
+     * {"week":["tuesday","wednesday","thursday","friday","saturday","sunday","monday","tuesday"],"time":"16:35","todayDate":"26.11"}
+     * Используется для отображения на фронте и для расчета заблокированных ячеек
+     */
     function getCurrentWeekArray(cb) {
         var weekArr = sendRequest('get', '/getdatafront', null, function(response) {
             cb(JSON.parse(response));
         });
     }
+
+    /**
+     * 
+     *  @param {object*} session обьект текущей сессии пользователя
+     *  Функция подготавливает данные для отправки на сервер и осуществления регистрации события
+     *  Возвращает JSON с подготовленными данными.
+     * 
+     */
 
     function prepareData(session) {
         if (session.selectedElements.length >= 1) {
@@ -126,6 +167,13 @@ window.onload = function() {
         }
     }
 
+    /**
+     * 
+     * @param {array} selected_elements список выбранных элементов
+     * Функция возвращает boolean
+     * True если переданные элементы содержат в себе неактивные
+     * False если нет
+     */
     function inactiveSlotsSelectDetecetion(selected_elements) {
         for (var i = 0; i < selected_elements.length; i++) {
             if (selected_elements[i].classList.contains('inactive')) {
@@ -135,6 +183,12 @@ window.onload = function() {
         return false;
     }
 
+    /**
+     * 
+     * @param {object*} session обьект текущей сессии пользователя
+     * @param {function} cb колбэк функция
+     * Функия возвращает в колбэке статус проверки ячеек на обеденное время.
+     */
     function lunchDetection(session, cb) {
         //chek if selected cells not avalaible to select
         if (inactiveSlotsSelectDetecetion(session.selectedElements)) {
@@ -151,6 +205,10 @@ window.onload = function() {
         }
     }
 
+    /**
+     * Функция очищает выбранные элементы (ячейки)
+     * Возвращает пустой массив
+     */
     function clearIfAnotherCellsSelected() {
         var selectedElements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -162,13 +220,15 @@ window.onload = function() {
         return selectedElements;
     }
 
+    /**
+     * 
+     * @param {string} mode  html коллекция или массив таймслотов
+     * @param {array} obj in dependency of mode : element obj(in case of inactive slots by time) 
+     * or timeslots array from  GET /getbusycalendar (in case of check already busy slots)
+     * reparing array with time slots by day to select
+     */
     function getSameDayCells(mode, obj) {
-        /**
-         * mode = html collection element or array of timeslots
-         * obj = in dependency of mode : element obj(in case of inactive slots by time) 
-         * or timeslots array from  GET /getbusycalendar (in case of check already busy slots)
-         */
-        //preparing array with time slots by day to select
+
         var sameday_cells_arr = new Array();
 
         if (mode === 'element_mode') {
@@ -191,6 +251,13 @@ window.onload = function() {
 
         return sameday_cells_arr;
     }
+
+    /**
+     * 
+     * @param {object} element html элемент
+     * @param {Number} serviceDuration  количество единиц времени х 30 минут пер юнит
+     * Осуществляет фактический выбор ячеек по клику\тачу
+     */
 
     function chooseCellsByServiceDuration(element, serviceDuration) {
         //clear if another cells selected
@@ -220,6 +287,11 @@ window.onload = function() {
         return;
     }
 
+    /**
+     * 
+     * @param {object} e элемент html
+     * Вызывает функцию chooseCellsByServiceDuration в зависимости от выбранного пользователем service в select
+     */
     function selectCell(e) {
         switch (session.service) {
             case 'manikur':
@@ -246,25 +318,45 @@ window.onload = function() {
         return;
     }
 
+
+    /**
+     * 
+     * @param {string} message сообщение при вводе данных
+     * Осуществляет вызов сообщения в сулчае фокуса на инпут с email
+     */
     function showEmailTip(message) {
         emailTip.innerHTML = message;
         emailTip.style.display = 'block';
         return;
     }
 
+    /**
+     * Осуществляет скрытия сообщения в сулчае разфокуса на инпут с email
+     */
+
     function hideEmailTip() {
         emailTip.style.display = 'none';
         return;
     }
 
+    /**
+     * Изменяет строку ввода имени таким образом, чтобы первая буква становилась заглавной
+     */
     function upperName() {
         var uppedName = customerName.value.charAt(0).toUpperCase();
         for (i = 1; i < customerName.value.length; i++) {
             uppedName = uppedName + customerName.value[i];
         }
         customerName.value = uppedName;
+        console.log(uppedName)
         return;
     }
+
+    /**
+     * 
+     * @param {function} callback колбэк функция
+     * Осуществляет проверку полей на заполнение данными
+     */
 
     function fieldsChecked(callback) {
         var customerNameValue = customerName.value;
@@ -279,12 +371,18 @@ window.onload = function() {
         return;
     };
 
+    /**
+     * Функция скрывает открытый календарь бронирования
+     */
     function hideCalendar() {
         calendar.style.display = 'block';
         myformSubmit.style.display = 'block';
         return;
     }
 
+    /**
+     * Функция отображает календарь бронирования в случае успешной проверки fieldsChecked();
+     */
     function showCalendar() {
         fieldsChecked(function(status) {
             switch (status) {
@@ -303,6 +401,11 @@ window.onload = function() {
         });
     };
 
+    /**
+     * 
+     * @param {*} event 
+     * Функция маскирования телефонного номера в инпуте
+     */
     function mask(event) {
         event.keyCode && (keyCode = event.keyCode);
         var pos = this.selectionStart;
@@ -328,14 +431,16 @@ window.onload = function() {
         if (event.type == "blur" && this.value.length < 5) this.value = ""
     }
 
+    /**
+     * Функция вызова формы ввода данных
+     */
     function openRecord() {
         document.getElementsByClassName('customer_data')[0].style.display = "block";
     };
 
-    function addRecord() {
-        alert('Вы успешно записались!');
-    };
-
+    /**
+     * Назначение слушаталей событий для html элементов
+     */
     emailField.onfocus = function() {
         showEmailTip(emailBlurMessage);
     };
@@ -375,8 +480,6 @@ window.onload = function() {
         });
     });
 
-    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     var vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
 }
