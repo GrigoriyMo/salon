@@ -31,26 +31,18 @@ window.onload = function() {
     function sendRequest(method, url, object, cb) {
         if (object !== false) {
             var xhr = new XMLHttpRequest();
-
-
             xhr.open(method, url, true);
-            xhr.setRequestHeader("Content-Security-Policy", "upgrade-insecure-requests");
             xhr.onload = function() {
-                if (xhr.status != 200) {
-                    // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-                    console.log("\u041E\u0448\u0438\u0431\u043A\u0430 ".concat(xhr.status, ": ").concat(xhr.statusText)); // Например, 404: Not Found
-                } else {
-                    // если всё прошло гладко, выводим результат
-                    console.log("\u0413\u043E\u0442\u043E\u0432\u043E, \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 ".concat(xhr.response.length, " \u0431\u0430\u0439\u0442")); // response -- это ответ сервера
-
+                if (xhr.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                    console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`); // Например, 404: Not Found
+                } else { // если всё прошло гладко, выводим результат
+                    console.log(`Готово, получили ${xhr.response.length} байт`); // response -- это ответ сервера
                     cb(xhr.response);
                 }
-            };
-
+            }
             if (method === 'post') {
                 xhr.setRequestHeader("Content-Type", "application/json");
             }
-
             xhr.send(object);
         } else {
             alert('Что-то пошло не так', object);
@@ -60,7 +52,6 @@ window.onload = function() {
     function getTodayCells() {
         var todayCells = new Array();
         for (var i = 0; i < calendarCells.length; i++) {
-
             if (calendarCells[i].dataset.day === session.todayDate) {
                 todayCells.push(calendarCells[i]);
             }
@@ -85,8 +76,7 @@ window.onload = function() {
         });
     }
 
-    function hideInactiveSlots(session) {
-        console.log(session.currentTime);
+    function hideInactiveSlots(session, cb) {
         var todaySlots = getTodayCells();
         if (session.currentTime > '21:30') {
             for (var i = 0; i < todaySlots.length; i++) {
@@ -94,10 +84,12 @@ window.onload = function() {
             }
         }
         for (var i = 0; i < todaySlots.length; i++) {
+            console.log(todaySlots[i].dataset.hour);
             if (todaySlots[i].dataset.hour <= offsetCount(session.currentTime, session.offset)) {
                 todaySlots[i].classList.add('inactive');
             }
         }
+        cb(document.getElementsByClassName('inactive'));
     }
 
     function getCurrentWeekArray(cb) {
@@ -151,13 +143,10 @@ window.onload = function() {
         }
     }
 
-    function clearIfAnotherCellsSelected() {
-        var selectedElements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
+    function clearIfAnotherCellsSelected(selectedElements = []) {
         for (i = 0; i < selectedElements.length; i++) {
             selectedElements[i].classList.remove('selected-time-slot');
         }
-
         selectedElements = [];
         return selectedElements;
     }
@@ -170,7 +159,6 @@ window.onload = function() {
          */
         //preparing array with time slots by day to select
         var sameday_cells_arr = new Array();
-
         if (mode === 'element_mode') {
             for (var i = 0; i < calendarCells.length; i++) {
                 if (calendarCells[i].dataset.day === obj.dataset.day) {
@@ -180,15 +168,12 @@ window.onload = function() {
         } else if (mode === 'array_mode') {
             for (var o = 0; o < obj.length; o++) {
                 for (var i = 0; i < obj[o].timeslot.length; i++) {
-                    if (document.querySelectorAll("[data-day=\"".concat(obj[o].date, "\"][ data-hour=\"").concat(obj[o].timeslot[i], "\"]"))[0]) {
-                        document.querySelectorAll("[data-day=\"".concat(obj[o].date, "\"][ data-hour=\"").concat(obj[o].timeslot[i], "\"]"))[0].classList.add('inactive');
-                    }
-
-                    ;
+                    if (document.querySelectorAll(`[data-day="${obj[o].date}"][ data-hour="${obj[o].timeslot[i]}"]`)[0]) {
+                        document.querySelectorAll(`[data-day="${obj[o].date}"][ data-hour="${obj[o].timeslot[i]}"]`)[0].classList.add('inactive');
+                    };
                 }
             }
         }
-
         return sameday_cells_arr;
     }
 
@@ -217,6 +202,7 @@ window.onload = function() {
                 alert('Невозможно выбрать данное время');
             }
         });
+        console.log(session.selectedElements);
         return;
     }
 
@@ -349,7 +335,7 @@ window.onload = function() {
             session.weekArr = response.week;
             session.currentTime = response.time;
             session.todayDate = response.todayDate;
-            hideInactiveSlots(session);
+            hideInactiveSlots(session, function(data) {});
         });
         for (i = 0; i < calendarCells.length; i++) {
             calendarCells[i].addEventListener('ontouchend', selectCell);
@@ -376,7 +362,7 @@ window.onload = function() {
     });
 
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    var vh = window.innerHeight * 0.01;
+    let vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 }

@@ -320,12 +320,34 @@ fieldset {
     .phone a {
         padding-left: 40px;
     }
+    .calendar {
+        width: 380px;
+        margin-left: -190px;
+        padding-bottom: 15px;
+    }
+    .cell {
+        width: 30px;
+        height: 16px;
+    }
 }
 
 
 /* Landscape phones and smaller */
 
 @media (max-width: 480px) {
+    /*     .calendar {
+        top: 50%;
+        left: 80%;
+        width: 380px;
+        min-height: 480px;
+        border-radius: 25px;
+        margin-left: -300px;
+        padding-bottom: 15px;
+    } */
+    .cell {
+        width: 30px;
+        height: 16px;
+    }
     .record {
         padding: 20px;
         width: 200px;
