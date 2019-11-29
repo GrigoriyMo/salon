@@ -23,6 +23,10 @@ fieldset {
     border: 0;
 }
 
+.nextweek {
+    display: none;
+}
+
 .opacity_blocks {
     opacity: 0.65;
 }
