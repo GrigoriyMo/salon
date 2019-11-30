@@ -98,146 +98,169 @@
                                                                     <% } %>
                                                             </tr>
                                                             <% } %>
-                                                                <tr data-hour="09:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00" data-timeslotend="09:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30" data-timeslotend="10:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00" data-timeslotend="09:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30" data-timeslotend="10:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="10:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:00" data-timeslotend="10:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:30" data-timeslotend="11:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-timeslotend="10:30" data-hour="10:00"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-timeslotend="11:00" data-hour="10:30"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="11:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00" data-timeslotend="11:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30" data-timeslotend="12:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00" data-timeslotend="11:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30" data-timeslotend="12:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="14:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00" data-timeslotend="14:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30" data-timeslotend="15:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00" data-timeslotend="14:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30" data-timeslotend="15:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="15:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00" data-timeslotend="15:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30" data-timeslotend="16:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00" data-timeslotend="15:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30" data-timeslotend="16:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="16:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00" data-timeslotend="16:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30" data-timeslotend="17:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00" data-timeslotend="16:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30" data-timeslotend="17:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="17:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00" data-timeslotend="17:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30" data-timeslotend="18:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00" data-timeslotend="17:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30" data-timeslotend="18:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="18:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00" data-timeslotend="18:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30" data-timeslotend="19:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00" data-timeslotend="18:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30" data-timeslotend="19:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="19:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00" data-timeslotend="19:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30" data-timeslotend="20:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00" data-timeslotend="19:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30" data-timeslotend="20:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
-                                                                <tr data-hour="20:00">
-                                                                    <% for(var i = 0; i < weekdata.length ; i++) {	%>
-                                                                        <%    if(i===weekdata.length-1){ %>
-                                                                            <td>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00" data-timeslotend="20:30" data-lastday="true"></div>
-                                                                                <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30" data-timeslotend="21:00" data-lastday="true"></div>
-                                                                            </td>
-                                                                            <%    }else{  %>
-                                                                                <td>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00" data-timeslotend="20:30"></div>
-                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30" data-timeslotend="21:00"></div>
-                                                                                </td>
-                                                                                <% }} %>
-                                                                </tr>
+                                                                <% for (var z = 0; z <  (currentWeek.time_list.length); z++ ){ %>
+                                                                    <tr data-hour="<%=currentWeek.time_list[z].first.start %>">
+                                                                        <% var week_day_names = weekdata.slice(0) %>
+                                                                            <% var hidden_class = "" %>
+                                                                                <% for(var i = 0; i < (weekdata.length*2) ; i++) {	%>
+                                                                                    <% if (i > 7){ %>
+                                                                                        <%   week_day_names = week_day_names.concat(week_day_names) ; hidden_class="nextweek"%>
+                                                                                            <% } %>
+                                                                                                <%    if(i===(weekdata.length*2)-1 ){ %>
+
+                                                                                                    <td>
+                                                                                                        <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>" data-lastday="true"></div>
+                                                                                                        <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <% }else{ %>
+                                                                                                        <td>
+                                                                                                            <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>"></div>
+                                                                                                            <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>"></div>
+                                                                                                        </td>
+                                                                                                        <% }%>
+                                                                                                            <% } %>
+                                                                    </tr>
+                                                                    <% } %>
+                                                                        <!--   <tr data-hour="09:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00" data-timeslotend="09:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30" data-timeslotend="10:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:00" data-timeslotend="09:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="09:30" data-timeslotend="10:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="10:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:00" data-timeslotend="10:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="10:30" data-timeslotend="11:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-timeslotend="10:30" data-hour="10:00"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-timeslotend="11:00" data-hour="10:30"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="11:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00" data-timeslotend="11:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30" data-timeslotend="12:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:00" data-timeslotend="11:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="11:30" data-timeslotend="12:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="14:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00" data-timeslotend="14:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30" data-timeslotend="15:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:00" data-timeslotend="14:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="14:30" data-timeslotend="15:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="15:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00" data-timeslotend="15:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30" data-timeslotend="16:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:00" data-timeslotend="15:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="15:30" data-timeslotend="16:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="16:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00" data-timeslotend="16:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30" data-timeslotend="17:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:00" data-timeslotend="16:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="16:30" data-timeslotend="17:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="17:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00" data-timeslotend="17:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30" data-timeslotend="18:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:00" data-timeslotend="17:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="17:30" data-timeslotend="18:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="18:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00" data-timeslotend="18:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30" data-timeslotend="19:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:00" data-timeslotend="18:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="18:30" data-timeslotend="19:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="19:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00" data-timeslotend="19:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30" data-timeslotend="20:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:00" data-timeslotend="19:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="19:30" data-timeslotend="20:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr>
+                                                                                        <tr data-hour="20:00">
+                                                                                            <% for(var i = 0; i < weekdata.length ; i++) {	%>
+                                                                                                <%    if(i===weekdata.length-1){ %>
+                                                                                                    <td>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00" data-timeslotend="20:30" data-lastday="true"></div>
+                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30" data-timeslotend="21:00" data-lastday="true"></div>
+                                                                                                    </td>
+                                                                                                    <%    }else{  %>
+                                                                                                        <td>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:00" data-timeslotend="20:30"></div>
+                                                                                                            <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= weekdata[i] %>" data-hour="20:30" data-timeslotend="21:00"></div>
+                                                                                                        </td>
+                                                                                                        <% }} %>
+                                                                                        </tr> -->
                             </tbody>
                         </table>
                     </div>

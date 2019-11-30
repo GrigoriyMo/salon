@@ -89,6 +89,11 @@ window.onload = function() {
         var replace_part = string[0] + string[1];
         var new_part = Number(replace_part) + offset; //for example 24
         var new_string = string.replace(replace_part, new_part);
+
+        if (new_string.length === 4) {
+            new_string = "0" + new_string;
+        }
+
         if (new_string > '24:00') {
             new_string = '24:00';
         }
@@ -263,6 +268,7 @@ window.onload = function() {
         //clear if another cells selected
         session.selectedElements = clearIfAnotherCellsSelected(session.selectedElements);
         var sameday_cells_arr = getSameDayCells('element_mode', element);
+
         for (var i = 0; i < sameday_cells_arr.length; i++) {
             if (sameday_cells_arr[i].dataset.hour === element.dataset.hour) {
                 for (var k = 0; k < serviceDuration; k++) {

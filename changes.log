@@ -1,2 +1,3 @@
 no; descr;
 N1; index.ejs hidden table headers added;
+N2; index.ejs - remake with lib.js data (time_list array). Some css fixes.;
