@@ -1,3 +1,4 @@
 no; descr;
-N1; index.ejs hidden table headers added;
-N2; index.ejs - remake with lib.js data (time_list array). Some css fixes.;
+N1; index.ejs - Hidden table headers added;
+N2; index.ejs - Remake with lib.js data (time_list array). Some css fixes.;
+N3; index.ejs - Work with hidden td elements.Some css fixes.; Remove old cycles from index.ejs

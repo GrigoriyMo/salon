@@ -354,7 +354,6 @@ window.onload = function() {
             uppedName = uppedName + customerName.value[i];
         }
         customerName.value = uppedName;
-        console.log(uppedName)
         return;
     }
 
