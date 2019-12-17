@@ -51,7 +51,7 @@
         <form action="#" class="record" method="POST">
             <fieldset>
                 <div class="calendar">
-
+                    <div class="calendar_shift_switcher " value="">switch_week</div>
                     <div class="time-slot-container">
                         <ul class="time-slot">
                             <li>09:00</li>
@@ -69,51 +69,55 @@
                         <table>
                             <tbody>
                                 <% var weekdata = currentWeek.activeDays.thisWeek; %>
-                                    <% for (var a = 0; a<2; a++ ){ %>
-                                        <% if(a>0){ %>
-                                            <%  var nextweek = "nextweek";%>
-                                                <%   }else{%>
-                                                    <%       var nextweek = "";%>
-                                                        <%   } %>%>
-                                                            <tr class="week-day <%=nextweek%>">
-                                                                <% for (var b = 0; b < (currentWeek.translatedDays.length);  b++ ) { %>
-                                                                    <th>
-                                                                        <%=currentWeek.translatedDays[b] %>
-                                                                    </th>
-                                                                    <% } %>
-                                                            </tr>
-                                                            <tr class="month-day <%=nextweek%>">
-                                                                <% for (var i = 0; i < currentWeek.translatedDays.length;  i++ ) { %>
-                                                                    <th>
-                                                                        <%= currentWeek.weekDays[i].slice(0, 2) %>
-                                                                    </th>
-                                                                    <% } %>
-                                                            </tr>
-                                                            <% } %>
-                                                                <% for (var z = 0; z <  (currentWeek.time_list.length); z++ ){ %>
-                                                                    <tr data-hour="<%=currentWeek.time_list[z].first.start %>">
-                                                                        <% var week_day_names = weekdata.slice(0) %>
-                                                                            <% var hidden_class = "" %>
-                                                                                <% for(var i = 0; i < (weekdata.length*2) ; i++) {	%>
-                                                                                    <% if (i === 8){ %>
-                                                                                        <%   var week_day_names_copy = week_day_names.slice(0) ; week_day_names_copy.shift() %>
-                                                                                            <%   week_day_names = week_day_names.concat(week_day_names_copy) ; hidden_class="nextweek"%>
-                                                                                                <% } %>
-                                                                                                    <%    if(i===(weekdata.length*2)-1 ){ %>
+                                    <% %>
+                                        <% for (var a = 0; a<2; a++ ){ %>
+                                            <% if(a>0){ %>
+                                                <%  var nextweek = "nextweek";var new_start_counter = 8;%>
+                                                    <%   }else{%>
+                                                        <%       var nextweek = "thisweek";%>
+                                                            <%          var new_start_counter = 0;%>
+                                                                <%   } %>%>
+                                                                    <tr class="week-day">
+                                                                        <% for (var b = 0; b < currentWeek.translatedDays.length ;  b++ ) { %>
+                                                                            <th class="<%=nextweek%>">
+                                                                                <%=currentWeek.translatedDays[b] %>
+                                                                            </th>
+                                                                            <% } %>
+                                                                    </tr>
+                                                                    <tr class="month-day">
+                                                                        <% for ( i = new_start_counter; i < currentWeek.weekDays.length;  i++ ) { %>
+                                                                            <% if(a===0 && i > 7 ) { continue;   }%>
+                                                                                <th class="<%=nextweek%>">
+                                                                                    <%= currentWeek.weekDays[i].slice(0, 2) %>
+                                                                                </th>
 
-                                                                                                        <td>
-                                                                                                            <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[1] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>" data-lastday="true"></div>
-                                                                                                            <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[1] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>" data-lastday="true"></div>
-                                                                                                        </td>
-                                                                                                        <% }else{ %>
-                                                                                                            <td>
-                                                                                                                <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>"></div>
-                                                                                                                <div class="cell <%=hidden_class%>" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>"></div>
-                                                                                                            </td>
-                                                                                                            <% }%>
-                                                                                                                <% } %>
+                                                                                <% } %>
                                                                     </tr>
                                                                     <% } %>
+                                                                        <% for (var z = 0; z <  (currentWeek.time_list.length); z++ ){ %>
+                                                                            <tr data-hour="<%=currentWeek.time_list[z].first.start %>">
+                                                                                <% var week_day_names = weekdata.slice(0) %>
+                                                                                    <% var hidden_class = "thisweek" %>
+                                                                                        <% for(var i = 0; i < (weekdata.length*2) ; i++) {	%>
+                                                                                            <% if (i === 8){ %>
+                                                                                                <%   var week_day_names_copy = week_day_names.slice(0) ; week_day_names_copy.shift() %>
+                                                                                                    <%   week_day_names = week_day_names.concat(week_day_names_copy) ; hidden_class="nextweek"%>
+                                                                                                        <% } %>
+                                                                                                            <%    if(i===(weekdata.length*2)-1 ){ %>
+
+                                                                                                                <td class="<%=hidden_class%>">
+                                                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[1] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>" data-lastday="true"></div>
+                                                                                                                    <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[1] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>" data-lastday="true"></div>
+                                                                                                                </td>
+                                                                                                                <% }else{ %>
+                                                                                                                    <td class="<%=hidden_class%>">
+                                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].first.start%>" data-timeslotend="<%=currentWeek.time_list[z].first.end%>"></div>
+                                                                                                                        <div class="cell" data-day="<%=`${currentWeek.weekDays[i]}` %>" data-wday="<%= week_day_names[i] %>" data-hour="<%=currentWeek.time_list[z].second.start%>" data-timeslotend="<%=currentWeek.time_list[z].second.end%>"></div>
+                                                                                                                    </td>
+                                                                                                                    <% }%>
+                                                                                                                        <% } %>
+                                                                            </tr>
+                                                                            <% } %>
                             </tbody>
                         </table>
                     </div>

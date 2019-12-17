@@ -1,4 +1,6 @@
 no; descr;
 N1; index.ejs - Hidden table headers added;
 N2; index.ejs - Remake with lib.js data (time_list array). Some css fixes.;
-N3; index.ejs - Work with hidden td elements.Some css fixes.; Remove old cycles from index.ejs
+N3; index.ejs - Work with hidden td elements.Some css fixes. Remove old cycles from index.ejs;
+N4; index.ejs, public script.js, public.css - css bug fixes, public script corrected hideInactiveSlots, index.ejs hidden cells progress; 
+N5; index.eks, script.js - calendar shift done;

@@ -23,6 +23,10 @@ fieldset {
     border: 0;
 }
 
+.week-day {
+    display: table-row;
+}
+
 .nextweek {
     display: none;
 }
@@ -180,7 +184,7 @@ fieldset {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
     margin-left: -200px;
     margin-top: -240px;
@@ -201,7 +205,13 @@ fieldset {
     padding-left: 53px;
 }
 
-.calendar-header tr td {
+.calendar table tbody tr {
+    display: inline-block;
+    max-width: 366px;
+    ;
+}
+
+.cal .calendar-header tr td {
     padding: 0 8px;
 }
 

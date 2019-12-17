@@ -12,6 +12,9 @@ window.onload = function() {
     var nextButton = document.querySelector('.next');
     var calendarCells = document.getElementsByClassName('cell');
     var serviceSelect = document.querySelector('.service-select');
+    var thisweek_cells = document.getElementsByClassName("calendar")[0].querySelectorAll('.thisweek');
+    var nextweek_cells = document.getElementsByClassName("calendar")[0].querySelectorAll('.nextweek');
+    var nextWeekSwitcher = document.getElementsByClassName("calendar_shift_switcher")[0];
     var serviceDuration = {
         /*
         **
@@ -24,6 +27,10 @@ window.onload = function() {
         manikurPedikur: 6,
         pedikur: 2
     };
+    /**
+     * Флаг сдвига календаря. По умолчанию имеет значение 0.
+     */
+    var calendar_shifted = 0;
 
     var session = new Object();
     session.offset = 2;
@@ -38,8 +45,6 @@ window.onload = function() {
     function sendRequest(method, url, object, cb) {
         if (object !== false) {
             var xhr = new XMLHttpRequest();
-
-
             xhr.open(method, url, true);
             xhr.setRequestHeader("Content-Security-Policy", "upgrade-insecure-requests");
             xhr.onload = function() {
@@ -72,7 +77,7 @@ window.onload = function() {
         var todayCells = new Array();
         for (var i = 0; i < calendarCells.length; i++) {
 
-            if (calendarCells[i].dataset.day === session.todayDate) {
+            if (calendarCells[i].dataset.day === calendarCells[0].dataset.day) {
                 todayCells.push(calendarCells[i]);
             }
         }
@@ -84,7 +89,6 @@ window.onload = function() {
      * @param {number} offset офсет - глобальный параметр 
      * Возвращает время с учетом офсета, для блокировки ячеек текущего дня
      */
-
     function offsetCount(string, offset) {
         var replace_part = string[0] + string[1];
         var new_part = Number(replace_part) + offset; //for example 24
@@ -112,6 +116,44 @@ window.onload = function() {
 
     /**
      * 
+     * @param {*} session 
+     */
+    function shiftCalendar() {
+        console.log(thisweek_cells.length)
+        console.log(nextweek_cells.length)
+        console.log(Boolean(calendar_shifted))
+        if (calendar_shifted) {
+            for (var i = 0; i < thisweek_cells.length; i++) {
+                thisweek_cells[i].style.display = "table-cell";
+                if (i < nextweek_cells.length) {
+                    nextweek_cells[i].style.display = "none";
+                }
+
+                if (i === (thisweek_cells.length - 1)) {
+                    calendar_shifted = 0;
+                    console.log(`calendar_shifted = 0;`);
+                }
+            }
+        } else {
+
+            for (var i = 0; i < thisweek_cells.length; i++) {
+                thisweek_cells[i].style.display = "none";
+                if (i < nextweek_cells.length) {
+                    nextweek_cells[i].style.display = "table-cell";
+                }
+                if (i === (thisweek_cells.length - 1)) {
+                    calendar_shifted = 1;
+                    console.log(`calendar_shifted = 1;`);
+                }
+            }
+
+        }
+    }
+
+
+
+    /**
+     * 
      * @param {object*} session обьект текущей сессии пользователя
      * Помечает ячейки (забронированные и с учетом офсета) как неактивные 
      * для выбора (бронирования) пользователем.
@@ -125,6 +167,7 @@ window.onload = function() {
         }
         for (var i = 0; i < todaySlots.length; i++) {
             if (todaySlots[i].dataset.hour <= offsetCount(session.currentTime, session.offset)) {
+
                 todaySlots[i].classList.add('inactive');
             }
         }
@@ -466,7 +509,7 @@ window.onload = function() {
             calendarCells[i].addEventListener('click', selectCell);
         }
     })();
-
+    nextWeekSwitcher.addEventListener("click", shiftCalendar)
     customerName.addEventListener("blur", upperName);
     openRecordBut.addEventListener('click', openRecord);
     openRecordBut.addEventListener('ontouchend', openRecord);
@@ -487,4 +530,5 @@ window.onload = function() {
 
     var vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+
 }
